@@ -4,10 +4,17 @@ const Record = ({
   record: { id, name, price, quantity, cost },
   index,
   deleteRecord,
+  updateRecord,
 }) => {
   const handleDeleteBtn = () => {
     deleteRecord(id);
   };
+  const handleSubBtn=() => {
+    quantity >1 && updateRecord(id,-1)
+  }
+  const handleAddBtn=() => {
+    updateRecord(id,1)
+  }
   return (
     <tr className="group odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
       <td className="px-6 py-4 td-counter">{index + 1}</td>
@@ -19,7 +26,7 @@ const Record = ({
       </th>
       <td className="px-6 py-4 text-end record-price">{price}</td>
       <td className="px-6 py-4 text-end">
-        <button className="q-sub pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 duration-200 bg-blue-100 text-blue-600 p-1 rounded">
+        <button  onClick={handleSubBtn} className="q-sub pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 duration-200 bg-blue-100 text-blue-600 p-1 rounded">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -36,7 +43,7 @@ const Record = ({
           </svg>
         </button>
         <span className="record-q w-5 inline-block">{quantity}</span>
-        <button className="q-add pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 translate-x-6 group-hover:translate-x-0 duration-200 bg-blue-100 text-blue-600 p-1 rounded">
+        <button onClick={handleAddBtn} className="q-add pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 translate-x-6 group-hover:translate-x-0 duration-200 bg-blue-100 text-blue-600 p-1 rounded">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

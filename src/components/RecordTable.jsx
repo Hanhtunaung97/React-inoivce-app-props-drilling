@@ -1,7 +1,7 @@
 import React from "react";
 import RecordGroup from "./RecordGroup";
 
-const RecordTable = ({ records,deleteRecord }) => {
+const RecordTable = ({ records, deleteRecord, updateRecord }) => {
   return (
     <section>
       <div className="relative shadow-md sm:rounded-lg overflow-hidden">
@@ -26,17 +26,23 @@ const RecordTable = ({ records,deleteRecord }) => {
             </tr>
           </thead>
           <tbody id="recordGroup">
-            <RecordGroup records={records} deleteRecord={deleteRecord} />
+            <RecordGroup
+              records={records}
+              deleteRecord={deleteRecord}
+              updateRecord={updateRecord}
+            />
           </tbody>
           <tfoot>
-            <tr className="border-b">
-              <td className="px-6 py-4 text-center" colSpan={4}>
-                Total
-              </td>
-              <td className="px-6 py-4 text-end" id="recordTotal">
-                {records.reduce((pv, cv) => pv + cv.cost, 0).toFixed(2)}
-              </td>
-            </tr>
+            {records.length > 0 && (
+              <tr className="border-b">
+                <td className="px-6 py-4 text-center" colSpan={4}>
+                  Total
+                </td>
+                <td className="px-6 py-4 text-end" id="recordTotal">
+                  {records.reduce((pv, cv) => pv + cv.cost, 0).toFixed(2)}
+                </td>
+              </tr>
+            )}
           </tfoot>
         </table>
       </div>
