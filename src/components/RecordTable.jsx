@@ -46,7 +46,7 @@ const RecordTable = ({ records, deleteRecord, updateRecord }) => {
           </tfoot>
         </table>
       </div>
-      <div className="hidden mt-0 print:block print:mt-10">
+      <div className="hidden mt-0 print:flex flex-col gap-3 print:mt-10">
         <p className="font-bold">ဝယ်ယူအားပေးမူ့ကို ကျေးဇူး အထူးတင်ရှိပါသည်။</p>
         <p className="text-gray-600">နောက်လည်း လာအားပေးပါခင်ဗျာ။</p>
       </div>
